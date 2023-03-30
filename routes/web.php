@@ -28,18 +28,12 @@ Route::get('/', function () {
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::middleware(['auth'])->group(function (){
-    Route::get('/tt',[UserController::class,'RedirectTott']);
-    Route::get('/staff',[StaffController::class,'RedirectTostaff']);
-    Route::get('/add',[ProjectController::class,'toadd']);
-    Route::post('/staff/add',[ProjectController::class,'addProject'])->name('addProject');
+    Route::view('main','main');
+    Route::get('/sorting/{projectname}', function ($projectname){
+        return view('sorting', ['projectname'=>$projectname]);
+    });
 });
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::prefix('staff')->middleware(['staff'])->group(function (){
+    Route::view('project','project');
 });
 

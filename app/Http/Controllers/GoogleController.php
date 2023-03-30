@@ -39,6 +39,6 @@ class GoogleController extends Controller
 
             auth()->login($newUser, true);
         }
-        return redirect()->to('/tt');
+        return redirect()->to('/main');
     }
 }
