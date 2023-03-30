@@ -35,5 +35,8 @@ Route::middleware(['auth'])->group(function (){
 });
 Route::prefix('staff')->middleware(['staff'])->group(function (){
     Route::view('project','project');
+    Route::get('/project/{id}', function ($id){
+        return view('edit',['id'=>$id]);
+    });
 });
 

@@ -59,4 +59,6 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public const STATUS_STAFF = 'STAFF';
+    public const STATUS_ADMIN = 'ADMIN';
 }

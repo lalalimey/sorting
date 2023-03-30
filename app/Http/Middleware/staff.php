@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class staff
@@ -13,9 +15,16 @@ class staff
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-
-        return $next($request);
+        if (Gate::allows('staff-action')) {
+            return $next($request);
+        } elseif ($request->ajax() || $request->wantsJson()) {
+            return abort(401);
+        } elseif (Auth::check()) {
+            return abort(401);
+        } else {
+            return redirect()->guest('/')->with('notify', 'กรุณาเข้าสู่ระบบ');
+        }
     }
 }
