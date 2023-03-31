@@ -288,9 +288,4 @@
 <a href="{{ url('auth/google') }}">
     log-in
 </a>
-<?php use Illuminate\Support\Facades\DB; ?>
-@if(DB::table('users')->pluck('staff_text')=='1'))
-<a href="{{ url('/staff') }}">
-    staff
-</a>
-@endif
+

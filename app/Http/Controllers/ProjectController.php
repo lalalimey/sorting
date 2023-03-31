@@ -7,34 +7,24 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 class ProjectController extends Controller
 {
-    public function toadd()
+    public function adddepartment()
     {
-        $id = Auth::id();
-        $staff_raw = DB::table('users')->where('id',$id)->pluck('staff');
-        $staff = $staff_raw[0];
-        if($staff==1){
-            return view('add');
-        } else {
-            return redirect('/');
-        }
+
 
     }
 
-    public function addProject(Request $request) {
-        return back()->with('msg','กรุณาใส่ชื่อที่ไม่ซ้ำกับโครงการที่มีอยู่แล้ว');
-        $projects = DB::table('project')->pluck('project_name');
-        foreach ($projects as $project){
-            if ($request->project == $project||$request->project == ""){
-                return back()->with('msg','กรุณาใส่ชื่อที่ไม่ซ้ำกับโครงการที่มีอยู่แล้ว');
+    public function addProject(Request $request)
+    {
+        try
+        {
+            $validated = $request->validate([
+                'name' =>'required'
+            ]);
+            if (!$validated){
+                return back()->withInput();
             }
-            else{
-                return back()->with('msg','success');
-            }
+        } catch (Exception $e){
+            return back()->withInput();
         }
-        $check = array($request);
-        $request->validate(['project','require|unique:project|max:2']);
-        return redirect()->back()->with('');
-
-            dd($request->project);
     }
 }

@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function ($table){
-            $table->string('staff_text')->nullable();
+        Schema::create('department', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->text('name');
+            $table->text('password');
+            $table->integer('slot_num');
+            $table->integer('slot_left');
         });
     }
 
@@ -21,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('department_colume');
     }
 };

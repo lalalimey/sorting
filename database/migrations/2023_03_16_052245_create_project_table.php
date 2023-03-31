@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('project_name');
             $table->integer('creator_id');
             $table->enum('status',['processing','finish'])->default('processing');
-            $table->integer('department');
+            $table->longText('department')->nullable();
             $table->integer('max_selected');
         });
     }
