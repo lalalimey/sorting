@@ -29,8 +29,8 @@ Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::middleware(['auth'])->group(function (){
     Route::view('main','main');
-    Route::get('/sorting/{projectname}', function ($projectname){
-        return view('sorting', ['projectname'=>$projectname]);
+    Route::get('/sorting/{id}', function ($id){
+        return view('sorting', ['id'=>$id]);
     });
 });
 Route::prefix('staff')->middleware(['staff'])->group(function (){
@@ -38,5 +38,6 @@ Route::prefix('staff')->middleware(['staff'])->group(function (){
     Route::get('/project/{id}', function ($id){
         return view('edit',['id'=>$id]);
     });
+    Route::post('/project/adddepartment',[ProjectController::class,'adddepartment']);
 });
 

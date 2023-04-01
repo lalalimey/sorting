@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('password');
             $table->integer('slot_num');
             $table->integer('slot_left');
+            $table->integer('project_id');
         });
     }
 

@@ -36,6 +36,8 @@ class CreateUsersTable extends Migration
             $table->boolean('agreetotermsandconditions')->default(0);
             $table->boolean('dataconsent')->default(0);
             $table->longText('like_issue_list')->default('[]');
+            $table->longText('selected')->nullable();
+            $table->longText('sorted')->nullable();
             $table->timestamps();
         });
     }
