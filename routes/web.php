@@ -39,5 +39,6 @@ Route::prefix('staff')->middleware(['staff'])->group(function (){
         return view('edit',['id'=>$id]);
     });
     Route::post('/project/adddepartment',[ProjectController::class,'adddepartment']);
+    Route::post('/addproject',[ProjectController::class,'addProject']);
 });
 

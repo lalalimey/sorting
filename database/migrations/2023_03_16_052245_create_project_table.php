@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('project', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('project_name');
+            $table->string('project_name')->default('name');
             $table->integer('creator_id');
             $table->enum('status',['processing','finish'])->default('processing');
             $table->longText('department')->nullable();

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    @include('alert')
     @vite('resources/css/app.css')
     <body>
     <div class="m-5">
