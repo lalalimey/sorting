@@ -2,6 +2,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8"/>
+    <meta name="theme-color" content="cornflowerblue"/>
+    <meta name="google" content="notranslate"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=" crossorigin="anonymous"/>
+    <link rel="shortcut icon" href="/favicon.png"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="/css/app.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
     <link href="/dist/output.css" rel="stylesheet">
     <style>
         body {
@@ -9,61 +19,185 @@
             margin: 0;
             background-color: rgb(218, 231, 255);
         }
-        .header{
-            width:100%;
-            height: 40px;
-            background-color: cornflowerblue;
-            margin-bottom: 10px;
-            padding-left: 40px;
-            padding-top: 20px;
-            position: fixed;
-        }
-        .fonthead{
-            font-size: 16px;
-            font-weight: 400;
-        }
-        .button {
-            position: fixed;
-            right: 0px;
-            top: 0px;
-            display: inline-block;
-            background-color: #5a80c7;
-            border: none;
-            color: #FFFFFF;
-            text-align: center;
-            font-size: 24px;
-            padding: 20px;
-            width: 200px;
-            height: 60px;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin:0px;
-        }
+        .nav{
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    line-height: 65px;
+    text-align: center;
+    background-color: cornflowerblue;
+}
 
-        .button span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
+.nav div.logo{
+    width: 250px;
+    height: 10px;
+    position: fixed;
+    font-size: 16px;
+}
 
-        .button span:after {
-            content: '\00bb';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
+.nav div.logo a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+}
 
-        .button:hover span {
-            padding-right: 25px;
-        }
+.nav div.main_list{
+    width: 275px;
+    height: 65px;
+    float: right;
+    position: relative;
+}
 
-        .button:hover span:after {
-            opacity: 1;
-            right: 0;
-        }
+.nav div.main_list ul{
+    width:100%;
+    height: 65px;
+    display: flex;
+    list-style: none;
+}
+
+.nav div.main_list ul li{
+    width: 150px;
+    height: 65px;
+    float: right;
+}
+
+.nav div.main_list ul li a{
+    text-decoration: none;
+    color: #fff;
+    line-height: 65px;
+    text-transform: uppercase;
+}
+
+.nav div.main_list ul li a:hover{
+    color: #c0c0c0;
+}
+
+.nav div.media_button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    display: none;
+}
+
+.nav div.media_button button.main_media_button {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.nav div.media_button button.main_media_button span{
+    width: 98%;
+    height: 1px;
+    display: block;
+    background-color: #fff;
+    margin-top: 9px;
+    margin-bottom: 10px;
+}
+
+.nav div.media_button button.main_media_button:hover span:nth-of-type(1){
+    transform: rotateY(180deg);
+    transition: all 0.5s;
+    background-color: #c0c0c0;
+}
+
+.nav div.media_button button.main_media_button:hover span:nth-of-type(2){
+    transform: rotateY(180deg);
+    transition: all 0.4s;
+    background-color: #c0c0c0;
+}
+
+.nav div.media_button button.main_media_button:hover span:nth-of-type(3){
+    transform: rotateY(180deg);
+    transition: all 0.3s;
+    background-color: #c0c0c0;
+}
+
+.nav div.media_button button.active span:nth-of-type(1) {
+    transform: rotate3d(0, 0, 1, 45deg);
+    position: absolute;
+    margin: 0;
+}
+
+.nav div.media_button button.active span:nth-of-type(2) {
+    display: none;
+}
+
+.nav div.media_button button.active span:nth-of-type(3) {
+    transform: rotate3d(0, 0, 1, -45deg);
+    position: absolute;
+    margin: 0;
+}
+
+.nav div.media_button button.active:hover span:nth-of-type(1) {
+    transform: rotate3d(0, 0, 1, 20deg);
+}
+
+.nav div.media_button button.active:hover span:nth-of-type(3) {
+    transform: rotate3d(0, 0, 1, -20deg);
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    .nav_container{
+        margin: 0;
+    }
+    
+}
+
+@media screen and (max-width:768px) {
+    
+    .nav_container{
+        margin: 0;
+    }
+    
+    
+    .nav div.main_list{
+        width: 100%;
+        margin-top: 65px;
+        height: 0px;
+        overflow: hidden;
+    }
+    
+    .nav div.show_list{
+        height: 200px;
+    }
+    
+    .nav div.main_list ul{
+        flex-direction: column;
+        width: 100%;
+        height: 200px;
+        top: 80px;
+        right: 0;
+        left: 0;
+    }
+    
+    .nav div.main_list ul li{
+        width: 100%;
+        height: 50px;
+        background-color: cornflowerblue;
+    }
+    .nav div.main_list ul li a{
+      text-align: center;
+        line-height: 40px;
+        width: 100%;
+        height: 40px;
+        display: table;
+    }
+    
+    .nav div.media_button{
+        display: block;
+    }
+}
+.nav_container{
+    margin-left: 10px;
+    margin-right: 5%;
+}
         .container {
             width: 406px;
             max-width: 406px;
@@ -111,7 +245,7 @@
         }
 
         #signup .inputs {
-            margin-top: 25px;
+            margin-top: 19px;
         }
 
         #signup .inputs label {
@@ -174,7 +308,7 @@
         #signup .inputs #submit {
             width: 100%;
             margin-top: 20px;
-            padding: 15px 0;
+            padding: 15px 20px;
             color: #fff;
             font-size: 14px;
             font-weight: 500;
@@ -222,15 +356,15 @@
         }
         .footer{
             width: 100%;
-            height: 20px;
+            height: 60px;
             background-color: cornflowerblue;
             position: fixed;
             left: 0;
             bottom: 0;
             font-weight: 400;
             padding-top: 20px;
-            padding-bottom: 18px;
-            padding-left: 40px;
+            padding-bottom: 20px;
+            padding-left: 53px;
         }
         .fontfoot{
             font-size: 13px;
@@ -241,20 +375,26 @@
     </style>
 </head>
 <body>
-<div class="header">
-    <font class="fonthead" color="white">
-        ระบบรับสมัคร Staff กิจกรรม MDCU NIGHT 2023
-    </font>
-    <a id="submit" href="https://www.md.chula.ac.th/" target="_blank" class="mdcu">
-        <button class="button" style="vertical-align:middle">
-                <span>
-                    <font color="white">
-                        MDCU
-                    </font>
-                </span>
-        </button>
-    </a>
-</div>
+<nav class="nav">
+    <div class="nav_container">
+        <div class="logo">
+            <a href="#">MDCU77 Sorting</a>
+        </div>
+        <div class="main_list" id="mainListDiv">
+            <ul>
+                <li><a href="https://www.md.chula.ac.th/" target="_blank">MDCU</a></li>
+                <li><a href="https://sites.google.com/docchula.com/mdcu77/home?pli=1&authuser=0" target="_blank">เว็บไซต์รุ่น 77</a></li>
+            </ul>
+        </div>
+        <div class="media_button">
+            <button class="main_media_button" id="mediaButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</nav>
 <div class="container">
 
     <form id="signup">
@@ -269,9 +409,7 @@
         <div class="sep"></div>
 
         <div class="inputs">
-
-            <a id="submit" href="{{ url('auth/google') }}">♦ LOG IN WITH DOCCHULA ACCOUNT ♦</a>
-
+            <a id="submit" href="{{ url('auth/google') }}"> <i class="material-icons left">lock</i>เข้าสู่ระบบด้วยบัญชี Docchula</a>
         </div>
 
     </form>
@@ -282,6 +420,19 @@
         IT Division, The Student Union of the Faculty of Medicine, Chulalongkorn University
     </font>
 </div>
+<script>
+            var mainListDiv = document.getElementById("mainListDiv"),
+    mediaButton = document.getElementById("mediaButton");
+
+mediaButton.onclick = function () {
+    
+    "use strict";
+    
+    mainListDiv.classList.toggle("show_list");
+    mediaButton.classList.toggle("active");
+    
+};
+    </script>
 </body>
 </html>
 
